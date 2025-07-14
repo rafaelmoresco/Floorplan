@@ -19,7 +19,7 @@ def main():
         area.append(circuit.get_floorplan_area()[2])
         print(f"Annealing completed in: {time_taken}")
         print(area[i])
-        circuit.plot_floorplan(save_path="data/ami49_floorplan{i}.png")
+        circuit.plot_floorplan(save_path="data/ami49_floorplan"+str(i+1)+".png")
     print(synttime)
     print(area)
 
