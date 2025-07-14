@@ -19,10 +19,7 @@ def main():
         area.append(circuit.get_floorplan_area()[2])
         print(f"Annealing completed in: {time_taken}")
         print(area[i])
-    #print(circuit.bstar_tree.inorder_traversal())
-    #circuit.bstar_to_circuit()
-    #circuit.print_bstar_tree()
-    #circuit.plot_floorplan(save_path="data/ami49_floorplan.png")
+        circuit.plot_floorplan(save_path="data/ami49_floorplan{i}.png")
     print(synttime)
     print(area)
 
