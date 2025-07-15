@@ -30,11 +30,11 @@ class Annealer:
             for _ in range(iterations_per_temp):
                 # Generate neighbor by randomly choosing an operation
                 neighbor_tree = self.circuit.bstar_tree.copy()
+                initial_tree = self.circuit.bstar_tree.copy()
                 nodes = neighbor_tree.collect_nodes()
                 if len(nodes) < 2:
                     continue
                 op = random.choice(["swap"])
-                #op = "swap"
                 if op == "swap":
                     node1, node2 = random.sample(nodes, 2)
                     node1.data, node2.data = node2.data, node1.data
@@ -59,7 +59,7 @@ class Annealer:
                         best_tree = neighbor_tree.copy()
                 else:
                     # Reject the move, revert to previous state
-                    self.circuit.bstar_tree = self.circuit.bstar_tree.copy()
+                    self.circuit.bstar_tree = initial_tree
             temperature *= cooling_rate
         # Apply the best solution found
         self.circuit.bstar_tree = best_tree
